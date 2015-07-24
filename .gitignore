@@ -1,0 +1,8 @@
+.project
+
+# takes care of *.pdb, *.exe
+bin/
+
+*.userprefs
+*.sln
+*.csproj
