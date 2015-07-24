@@ -8,18 +8,50 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 using System;
+
 namespace IO
 {
 	public class IODemo
 	{
-//		public static void Main(string [] args){
-//			start();
+//		public static void Main(){
+//			readFile();
+//			//writeToFile();
 //		}
 		
-		private static void start(){
+		private static void writeToFile(){
 			string str = System.Console.ReadLine();
 			System.Console.WriteLine("my str: " + str);
-			Console.ReadKey();
+			//Console.ReadKey();
+			
+			string[] lines = { "First line", "Second line", "Third line" };
+			//write to file
+			System.IO.File.WriteAllLines(@"C:\test\saveTest.txt", lines);
+			//First line
+			//Second line
+			
+			// Example #2: Write one string to a text file. 
+			string text = "A class is the most powerful data type in C#. Like a structure, " +
+						   "a class defines the data and behavior of the data type. ";
+			// WriteAllText creates a file, writes the specified string to the file, 
+			// and then closes the file.    You do NOT need to call Flush() or Close().
+			System.IO.File.WriteAllText(@"C:\test\saveTest.txt", text);
+			
+			// Example #4: Append new text to an existing file. 
+			// The using statement automatically flushes AND CLOSES the stream and calls  
+			// IDisposable.Dispose on the stream object. 
+			using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"C:\test\saveTest.txt", true)){
+				file.WriteLine("Some more text");
+			}
+		
+		}
+		
+		private static void readFile(){
+			// Example #1 
+			// Read the file as one string. 
+			string text = System.IO.File.ReadAllText(@"C:\test\saveTest.txt");
+			System.Console.WriteLine(text);
+			
+			
 		}
 	}
 }

@@ -5,9 +5,9 @@ using DLL;
 namespace DLL{
 	public class DLLDemo
 	{
-		public static void Main(){
-			start();
-		}
+//		public static void Main(){
+//			start();
+//		}
 		
 		private static void start(){
 			Worker w = new Worker();
