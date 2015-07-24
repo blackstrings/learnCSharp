@@ -8,24 +8,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 using System;
-using AliasBase = Inheritance.BaseClass;		//alias
-
-namespace Alias
+namespace IO
 {
-	public class AliasDemo
+	public class IODemo
 	{
-		
-		
-//		public static void Main(){
+//		public static void Main(string [] args){
 //			start();
 //		}
 		
-		
-		
 		private static void start(){
-			AliasBase alias = new AliasBase();		//put alias to use
-			alias.add(3,3);
-			System.Console.ReadKey();
+			string str = System.Console.ReadLine();
+			System.Console.WriteLine("my str: " + str);
+			Console.ReadKey();
 		}
 	}
 }

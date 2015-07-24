@@ -8,24 +8,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 using System;
-using AliasBase = Inheritance.BaseClass;		//alias
-
-namespace Alias
+namespace MyUtilLibrary
 {
-	public class AliasDemo
+	public class MyClass
 	{
+		public MyClass ()
+		{
+		}
 		
-		
-//		public static void Main(){
-//			start();
-//		}
-		
-		
-		
-		private static void start(){
-			AliasBase alias = new AliasBase();		//put alias to use
-			alias.add(3,3);
-			System.Console.ReadKey();
+		public int add(int x, int y){
+			return x+y;
 		}
 	}
 }
