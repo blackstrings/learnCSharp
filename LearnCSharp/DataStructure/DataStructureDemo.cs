@@ -8,20 +8,37 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 using System;
-using System.Collections*;
+using System.Collections;
 using System.Collections.Generic;
 
-namespace LearnCSharp
+using con = System.Console;
+
+namespace DataStructure
 {
 	public class DataStructureDemo
 	{
-		public static void Main(){
+//		public static void Main(){
+//			genericList();
+//		}
+		
+		private static void genericList(){
 			List<string> strs = new List<string>();
 			
 			strs.Add("one");
 			strs.Add("two");
 			strs.Add("three");
 			strs.Add("four");
+			
+			//all in one 
+			for(int i=0; i<strs.Count; i++){
+				con.Write( strs[i] + "." );
+			}
+			
+			//foreach
+			foreach(string str in strs){
+				Console.Write(str + ",");
+			}
+			
 			
 		}
 		

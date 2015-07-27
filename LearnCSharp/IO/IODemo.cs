@@ -19,9 +19,16 @@ namespace IO
 //		}
 		
 		private static void writeToFile(){
+			
+			//read input string
 			string str = System.Console.ReadLine();
+			
+			//all in one line
+			System.Console.Write(str);
+			
+			//write to multiple lines
 			System.Console.WriteLine("my str: " + str);
-			//Console.ReadKey();
+			//Console.ReadKey();	//pause
 			
 			string[] lines = { "First line", "Second line", "Third line" };
 			//write to file
