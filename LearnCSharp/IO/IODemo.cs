@@ -13,13 +13,68 @@ namespace IO
 {
 	public class IODemo
 	{
-//		public static void Main(){
-//			readFile();
-//			//writeToFile();
-//		}
-		
-		private static void writeToFile(){
+	
+		private static string path = @"C:\Users\xlao\git\LearnCSharp\LearnCSharp\IO\saveFile.txt";
+		public static void Main(){
 			
+			
+			//writeToFiileLineByLine();
+			//writeToFileAppend();
+			//writeToFileAllOneLine();
+			
+			string jsonStr = readJsonFile();
+			writeJson(jsonStr);
+			
+			//writeToConsole();
+		}
+		
+		private static void writeToFiileLineByLine(){
+			string[] lines = { "First line", "Second line", "Third line" };
+			//write to file
+			System.IO.File.WriteAllLines(path, lines);
+			//First line
+			//Second line
+			//third line
+		}
+		
+		private static void writeToFileAllOneLine(){
+			// Example #2: Write one string to a text file. 
+			string text = "writing all text to file in one line ";
+			
+			//getting the domain path if you ever need
+			//var appDomain = System.AppDomain.CurrentDomain;
+			//var basePath = appDomain.RelativeSearchPath ?? appDomain.BaseDirectory;
+			
+			//the @ lets you use characters without escaping them, otherwise you have to do //folder1//subfolder
+			
+			
+			//Console.WriteLine(path);
+			//System.IO.File.WriteAllText(appDomain + basePath, text);
+			//System.IO.File.WriteAllText(@"C:\test\saveTest.txt", text);
+			
+			// WriteAllText creates a file, writes the specified string to the file, 
+			// and then closes the file.    You do NOT need to call Flush() or Close().
+			System.IO.File.WriteAllText(path, text);
+			
+		}
+		
+		private static void writeJson(string jsonStr){
+			//string jsonStr = @"{'name':'tom'}";
+			System.IO.File.WriteAllText(path, jsonStr);
+		}
+		
+		private static void writeToFileAppend(){
+			
+			// Example #4: Append new text to an existing file. 
+			// The using statement automatically flushes AND CLOSES the stream and calls  
+			// IDisposable.Dispose on the stream object. 
+			using (System.IO.StreamWriter file = new System.IO.StreamWriter(path, true)){
+				file.WriteLine("Some more text");
+			}
+		
+		}
+		
+		private static void writeToConsole(){
 			//read input string
 			string str = System.Console.ReadLine();
 			
@@ -29,36 +84,15 @@ namespace IO
 			//write to multiple lines
 			System.Console.WriteLine("my str: " + str);
 			//Console.ReadKey();	//pause
-			
-			string[] lines = { "First line", "Second line", "Third line" };
-			//write to file
-			System.IO.File.WriteAllLines(@"C:\test\saveTest.txt", lines);
-			//First line
-			//Second line
-			
-			// Example #2: Write one string to a text file. 
-			string text = "A class is the most powerful data type in C#. Like a structure, " +
-						   "a class defines the data and behavior of the data type. ";
-			// WriteAllText creates a file, writes the specified string to the file, 
-			// and then closes the file.    You do NOT need to call Flush() or Close().
-			System.IO.File.WriteAllText(@"C:\test\saveTest.txt", text);
-			
-			// Example #4: Append new text to an existing file. 
-			// The using statement automatically flushes AND CLOSES the stream and calls  
-			// IDisposable.Dispose on the stream object. 
-			using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"C:\test\saveTest.txt", true)){
-				file.WriteLine("Some more text");
-			}
-		
 		}
 		
-		private static void readFile(){
+		private static string readJsonFile(){
 			// Example #1 
 			// Read the file as one string. 
-			string text = System.IO.File.ReadAllText(@"C:\test\saveTest.txt");
+			string text = System.IO.File.ReadAllText(path);
 			System.Console.WriteLine(text);
 			
-			
+			return text;
 		}
 	}
 }

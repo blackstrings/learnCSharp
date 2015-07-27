@@ -6,3 +6,4 @@ bin/
 *.userprefs
 *.sln
 *.csproj
+/json/
