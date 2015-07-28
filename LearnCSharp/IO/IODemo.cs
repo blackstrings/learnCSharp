@@ -8,6 +8,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 using System;
+using System.Collections.Generic;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace IO
 {
@@ -15,15 +18,18 @@ namespace IO
 	{
 	
 		private static string path = @"C:\Users\xlao\git\LearnCSharp\LearnCSharp\IO\saveFile.txt";
-		public static void Main(){
-			
-			
+//		public static void Main(){ start ();}
+		
+		private static void start(){
 			//writeToFiileLineByLine();
 			//writeToFileAppend();
 			//writeToFileAllOneLine();
 			
-			string jsonStr = readJsonFile();
-			writeJson(jsonStr);
+			//string jsonStr = readJsonFile();
+			
+			jsonExample1();
+			//jsonExample2();
+			
 			
 			//writeToConsole();
 		}
@@ -58,11 +64,6 @@ namespace IO
 			
 		}
 		
-		private static void writeJson(string jsonStr){
-			//string jsonStr = @"{'name':'tom'}";
-			System.IO.File.WriteAllText(path, jsonStr);
-		}
-		
 		private static void writeToFileAppend(){
 			
 			// Example #4: Append new text to an existing file. 
@@ -77,6 +78,7 @@ namespace IO
 		private static void writeToConsole(){
 			//read input string
 			string str = System.Console.ReadLine();
+			//var jsonObj = new JsonConvert(str);
 			
 			//all in one line
 			System.Console.Write(str);
@@ -86,14 +88,73 @@ namespace IO
 			//Console.ReadKey();	//pause
 		}
 		
+		private static void jsonExample1(){
+			
+			//create obj
+			Entity entity = new Entity();
+			entity.name = "mike";
+			
+			int[] ids = new int[]{3,35,23};
+			entity.ids = ids;
+			
+			
+			//serialize obj to json string
+			string jsonSerialized = JsonConvert.SerializeObject(entity);
+			
+			//write/save json string to file
+			writeToFileJsonStr(jsonSerialized);
+			
+			//load/deserialize jsonstr into object
+			string serializedStr = readJsonFile();
+			Console.WriteLine(serializedStr);
+			Entity nE = JsonConvert.DeserializeObject<Entity>(serializedStr);
+			
+			//access object property
+			Console.WriteLine(nE.name + " : " + nE.ids[0]);
+			//read back
+			
+		}
+		
+		/// <summary>
+		/// not owrking yet becuase need 4.5 .net
+		/// </summary>
+		private static void jsonExample2(){
+			string jsonStr = readJsonFile();
+			Console.WriteLine(jsonStr);
+			
+			
+			string str = @"{'name':'kim'}";
+			
+			//jobject is in json.linq but you can only use it if you have 4.5 or higher .net
+			//JObject obj = (JObject)JsonConvert.DeserializeObject(jsonStr);
+			//JObject obj = JObject.Parse(jsonStr);
+			
+			//Console.WriteLine(obj["name"]);
+		}
+		
+		private static void writeToFileJsonStr(string jsonStr){
+			//string jsonStr = @"{'name':'tom'}";
+			System.IO.File.WriteAllText(path, jsonStr);
+		}
+		
+		
 		private static string readJsonFile(){
 			// Example #1 
 			// Read the file as one string. 
 			string text = System.IO.File.ReadAllText(path);
-			System.Console.WriteLine(text);
+			
 			
 			return text;
 		}
+		
+		
+	}
+	
+	public class Entity
+	{
+		public string name {get;set;}
+		public int[] ids {get;set;}
+		public Entity(){}
 	}
 }
 

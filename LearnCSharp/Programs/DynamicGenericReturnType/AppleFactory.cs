@@ -17,9 +17,11 @@ namespace Programs.DynamicGenericReturnType
 			e.setProp(Prop.NAME, "Tom");
 			e.setProp(Prop.AGE, 5);
 			e.setProp(Prop.SPEED, 1.4f);
+			e.setProp(Prop.HIGH, true);
 			
 			return e;
 		}
+		
 	}
 }
 

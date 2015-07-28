@@ -22,12 +22,19 @@ namespace Programs.DynamicGenericReturnType
 			property = new Dictionary<Prop, Object>();
 		}
 		
+		//set properties
 		public void setProp(Prop key, Object value){
 			property.Add(key, value);
 		}
 		
 		//get properties
-		public T getProp<T>(Prop prop){
+		public dynamic getProp(Prop prop){
+			Object result = property[prop];
+			return result;
+		}
+		
+		//get properties but only the type you specify ex: getProps<int>
+		public T getProps<T>(Prop prop){
 			//test data repo
 			
 			Object result = property[prop];

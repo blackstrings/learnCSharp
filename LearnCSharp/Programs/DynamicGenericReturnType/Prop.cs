@@ -12,7 +12,7 @@ namespace Programs.DynamicGenericReturnType
 {
 	public enum Prop
 	{
-		NAME,AGE,SPEED
+		NAME,AGE,SPEED, HIGH
 	}
 }
 

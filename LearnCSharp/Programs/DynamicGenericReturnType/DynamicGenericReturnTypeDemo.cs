@@ -13,14 +13,17 @@ namespace Programs.DynamicGenericReturnType
 	public class DynamicGenericReturnTypeDemo
 	{
 	
-//		public static void Main(){
-//			start();
-//		}
+		public static void Main(){ start(); }
 		
 		public static void start (){
 			Entity e = AppleFactory.getObject();
-			string name = e.getProp<string>(Prop.NAME);
-			Console.WriteLine(name);
+			//string name = e.getProp<string>(Prop.NAME);
+			string name = e.getProp(Prop.NAME);
+			int age = e.getProp(Prop.AGE);
+			float speed = e.getProp(Prop.SPEED);
+			bool high = e.getProp(Prop.HIGH);
+			
+			Console.WriteLine(name + " : " + age + " : " + speed + " : " + high);
 		}
 	}
 }
