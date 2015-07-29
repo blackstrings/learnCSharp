@@ -13,7 +13,7 @@ namespace Programs.DynamicGenericReturnType
 	public class DynamicGenericReturnTypeDemo
 	{
 	
-		public static void Main(){ start(); }
+//		public static void Main(){ start(); }
 		
 		public static void start (){
 			Entity e = AppleFactory.getObject();

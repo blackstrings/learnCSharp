@@ -123,7 +123,7 @@ namespace IO
 			Console.WriteLine(jsonStr);
 			
 			
-			string str = @"{'name':'kim'}";
+			//string str = @"{'name':'kim'}";
 			
 			//jobject is in json.linq but you can only use it if you have 4.5 or higher .net
 			//JObject obj = (JObject)JsonConvert.DeserializeObject(jsonStr);

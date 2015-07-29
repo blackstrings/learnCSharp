@@ -15,7 +15,7 @@ namespace Programs.DynamicGenericReturnType
 		public static Apple getObject(){
 			Apple e = new Apple();
 			e.setProp(Prop.NAME, "Tom");
-			e.setProp(Prop.AGE, 5);
+			e.setProp(Prop.AGE, new Random().Next(1,10));
 			e.setProp(Prop.SPEED, 1.4f);
 			e.setProp(Prop.HIGH, true);
 			
