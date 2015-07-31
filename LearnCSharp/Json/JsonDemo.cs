@@ -9,25 +9,57 @@
 //------------------------------------------------------------------------------
 using System;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using Programs.DynamicGenericReturnType;
 
-namespace Json
+/// <summary>
+/// Thre are two ways of using JSON. One is where the json str is auto deserialized into a c# object.
+/// The other form is where a JSON str is deserialized into an actual JSON object (JObject) 
+/// which JObject uses the Newtonsoft.Json.Linq assembly
+/// </summary>
+namespace MyJson
 {
+	public class Foo{
+		public int age {get;set;}
+		public string name {get;set;}
+		public Foo(){}
+	}
 	public class JsonDemo
 	{
-		public static void Main(){ start(); }
+//		public static void Main(){ start(); }
 		
 		private static void start(){
-			Apple entity = AppleFactory.getObject();
 			
-			string serialized = JsonConvert.SerializeObject(entity);
-			Console.WriteLine(serialized);
-			
+			//example1
+			example1();
+			//if you want to grab the json values only and not convert the json to an object,
+			//you want to use linq, which is where JObject class is in
+			//you cannot parse or use jobject due to a lower version of .net
 			//JObject obj = JObject.Parse(serialized);
 			//Apple apple = (Apple)JsonConvert.DeserializeObject(serialized);
 			
 		}
+		
+		private static void example1(){
+			//example1
+			Foo foo = new Foo();
+			foo.name = "tom";
+			foo.age = 55;
+			
+			string serialized = JsonConvert.SerializeObject(foo);
+			Console.WriteLine(serialized);
+			
+			Foo foo2 = JsonConvert.DeserializeObject<Foo>(serialized);
+			Console.WriteLine(foo2.age);
+			
+			//example2
+			Entity e = AppleFactory.getObject();
+			serialized = JsonConvert.SerializeObject(e);
+			Console.WriteLine(serialized);
+			Entity ee = JsonConvert.DeserializeObject<Apple>(serialized);
+			Console.WriteLine( ee.getProp(Prop.SPEED));
+			
+		}
+		
 	}
 }
 

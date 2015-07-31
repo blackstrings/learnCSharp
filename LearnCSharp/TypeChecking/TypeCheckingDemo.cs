@@ -12,13 +12,35 @@ namespace TypeChecking
 {
 	public class TypeCheckingDemo
 	{
-//		public static void Main(){
-//			start();
-//		}
+//		public static void Main(){ start(); }
 		
 		private static void start(){
+			int num = 5;
+			bool t1 = num.GetType() == typeof(int); 	//true
+			bool t2 = num.GetType() == typeof(double);	//false
 			
+			//ex2
+			BaseType bt = new SubType();
+			//notice the differences
+			bool t3 = bt.GetType() == typeof(BaseType);	//false
+			bool t4 = bt is BaseType;					//true
+			bool t5 = bt.GetType() == typeof(SubType);	//true
+			
+			//ex3
+			if(bt is BaseType){
+				BaseType bt2 = (BaseType)bt;
+			}
+			//same as
+			BaseType bt3 = bt as BaseType;
+			
+		
 		}
+	}
+	public class BaseType { 
+		public BaseType(){}
+	}
+	public class SubType : BaseType {
+		public SubType(){}
 	}
 }
 

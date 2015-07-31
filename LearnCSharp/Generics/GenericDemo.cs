@@ -18,9 +18,7 @@ namespace Generics
 	
 	public class GenericDemo
 	{
-//		public static void Main(){
-//			start();
-//		}
+//		public static void Main(){ start(); }
 		
 		private static void start(){
 			simpleGeneric();
@@ -79,6 +77,7 @@ namespace Generics
 		}
 		
 		private static T returnGenericMethod3<T>(Prop prop){
+			//test data
 			Dictionary<Prop, Object> dict = new Dictionary<Prop, Object>();
 			dict.Add(Prop.NAME, "tom");
 			dict.Add(Prop.AGE, 55);

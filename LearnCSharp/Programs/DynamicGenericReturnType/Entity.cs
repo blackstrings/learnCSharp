@@ -27,16 +27,15 @@ namespace Programs.DynamicGenericReturnType
 			property.Add(key, value);
 		}
 		
-		//get properties
+		//get properties with no cast, more dangerous as no compile check, only runtime check
 		public dynamic getProp(Prop prop){
 			Object result = property[prop];
 			return result;
 		}
 		
+		//getproperties with casting - better approach
 		//get properties but only the type you specify ex: getProps<int>
-		public T getProps<T>(Prop prop){
-			//test data repo
-			
+		public T getProp2<T>(Prop prop){
 			Object result = property[prop];
 			return (T)result;
 			/*

@@ -8,6 +8,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 using System;
+
+//the propblem with this is that there is no typeSaftey
+//so you can't know the error until runtime, it is best practice to have typeSaftey on
+//so you would rather cast to the type when getting the attributes
 namespace Programs.DynamicGenericReturnType
 {
 	public class DynamicGenericReturnTypeDemo
