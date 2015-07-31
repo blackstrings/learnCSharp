@@ -20,6 +20,8 @@ namespace TBase
 		private PState ()
 		{
 			inventory = new List<int>();
+			inventory2 = new List<Item>();
+			itemRepo = ItemFactory.getObjects();
 			Console.WriteLine("PState alive");
 		}
 		
@@ -39,11 +41,9 @@ namespace TBase
 		//states
 		public List<int> inventory {get; private set;}
 		
+		public List<Item> inventory2 {get; private set;}
+		public List<Item> itemRepo {get;set;}
 		
-		//methods
-		public int getRandomNum(int min, int max){
-			return new Random().Next(min, max);
-		}
 	}
 }
 

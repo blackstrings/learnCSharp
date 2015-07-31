@@ -8,6 +8,12 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 using System;
+using System.Collections.Generic;
+
+/// <summary>
+/// If you call an obj's method inside a loop, 
+/// which the method does random, you'll get all the same number
+/// </summary>
 namespace Randomize
 {
 	public class RandomDemo
@@ -22,21 +28,31 @@ namespace Randomize
 			int num2 = rand.Next(10,20);
 			Console.WriteLine(num + " : " + num2);
 			
-			//ex2
+			//ex2 - will generate new numbers
 			int[] arr = new int[10];
 			for(int i=0; i<10; i++){
 				arr[i] = rand.Next(1,100);
 				Console.Write(arr[i] + ",");
 			}
+			Console.WriteLine();
 			Console.WriteLine(arr.ToString());
 			
-			
+			//ex3
 			double d = rand.NextDouble()*2;		//0-2.0
 			Console.WriteLine(d);
 			
 			float f = (float)rand.NextDouble()*5;
 			Console.WriteLine(f);
+			
+			//ex4 - take existing array, push into list, and re-shuffle list
+			List<int> ns = new List<int>(arr);
+			Shuffle.shuffle(ns);
+			for(int i=0; i<ns.Count; i++){
+				Console.Write(ns[i] + ",");
+			}
 		}
+		
+		
 	}
 }
 

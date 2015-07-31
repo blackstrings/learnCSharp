@@ -15,6 +15,7 @@ namespace TBase
 	
 		PState pstate;
 		
+		
 		public Box ()
 		{
 			pstate = PState.Instance;	
@@ -23,6 +24,13 @@ namespace TBase
 		public void open(int randomNum){
 			//int rand = pstate.getRandomNum(1,50);		//don't do this, it will give you same numbers
 			pstate.inventory.Add(randomNum);
+		}
+		
+		//alternative for not allowing this class to access the singleton
+		public Item item {get;set;}
+		public void open2(){
+			//give item to the controller handler
+			BoxController.itemToUser(item);
 		}
 		
 		

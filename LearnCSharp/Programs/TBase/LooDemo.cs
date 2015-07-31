@@ -10,6 +10,7 @@
 using System;
 using System.Text;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace TBase
 {
@@ -21,15 +22,18 @@ namespace TBase
 		{
 			//init
 			PState state = PState.Instance;
-			Box box = new Box();
+			Box box = BoxFactory.getObject();
 			
-			//something triggers event
+			//pretend event is triggered
 			Random rand = new Random();
 			for(int i=0; i<10; i++){
 				box.open(rand.Next(1,50));
 			}
 			
-			//pass by reference
+			//event triggered again
+			box.open2();
+			
+			//pass by reference test
 			List<int> test = state.inventory;
 			test.Add(99);
 			
@@ -38,10 +42,19 @@ namespace TBase
 			}
 			
 			Console.WriteLine();
-			//test the original object
+			//test state inventory directly
 			foreach(int val in state.inventory){
 				Console.Write(val + ", ");
 			}
+			Console.WriteLine();
+			
+			
+			//ex5
+			
+			
+			state = PState.Instance;	///prove that we are still getting just the same instance
+			string serialized = JsonConvert.SerializeObject(state);
+			Console.WriteLine(serialized);
 		
 			
 		}
