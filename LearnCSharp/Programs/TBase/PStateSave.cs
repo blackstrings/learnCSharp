@@ -12,16 +12,21 @@ using System.Collections.Generic;
 
 namespace TBase
 {
-	public class BoxFactory : IFactory
+	public class PStateSave
 	{
-		public Item getObject(){
-			Box box = new Box("DullBox");
-			box.item = PState.Instance.getItem();
-			return box;
-		}
+	
+		public List<int> inventory {get; set;}
+		public List<Item> itemInventory {get; set;}
 		
-		public List<Item> getObjects(){
-			return null;
+		//you do not need to full fill every field in the json
+		//for fields that don't exist, when load, that json portion just gets ignored
+		//public List<Item> itemTemplateRepo {get;set;}
+		
+		public PStateSave ()
+		{
+			inventory = new List<int>();
+			itemInventory = new List<Item>();
+			//itemTemplateRepo = new List<Item>();
 		}
 	}
 }

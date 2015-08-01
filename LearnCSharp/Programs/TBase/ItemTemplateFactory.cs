@@ -8,13 +8,24 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 using System;
+using System.Collections.Generic;
+
 namespace TBase
 {
-	public static class BoxController
+	public class ItemTemplateFactory : IFactory
 	{
-		//responsible to interacte between the box and the user
-		public static void itemToUser(Item item){
-			PState.Instance.inventory2.Add(item);
+		public List<Item> getObjects()
+		{
+			List<Item> items = new List<Item>();
+			for(int i=0; i<10; i++){
+				items.Add(new BagItem("item"+i));
+			}
+			return items;
+		}
+		
+		//not really useful at the moment
+		public Item getObject(){
+			return new BagItem("defaultItem");
 		}
 	}
 }

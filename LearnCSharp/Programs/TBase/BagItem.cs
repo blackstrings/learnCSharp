@@ -10,12 +10,11 @@
 using System;
 namespace TBase
 {
-	public class Item
+	public class BagItem : Item
 	{
-		public string name {get;set;}
-		public Item(){}
-		public Item (string name){
-			this.name = name;
+		public BagItem (string name) : base(name)
+		{
+			
 		}
 	}
 }

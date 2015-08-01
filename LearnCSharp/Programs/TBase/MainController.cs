@@ -10,12 +10,16 @@
 using System;
 namespace TBase
 {
-	public class Item
+	public static class MainController
 	{
-		public string name {get;set;}
-		public Item(){}
-		public Item (string name){
-			this.name = name;
+		//responsible to interacte between the box and the user
+		public static void itemToUser(Item item){
+			PState state = PState.Instance;
+			//Item item = state.getItem();
+			state.itemInventory.Add(item);
+		}
+		public static void numToUser(int rand){
+			PState.Instance.inventory.Add(rand);
 		}
 	}
 }

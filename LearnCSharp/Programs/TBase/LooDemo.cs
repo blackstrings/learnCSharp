@@ -16,22 +16,22 @@ namespace TBase
 {
 	public class LooDemo
 	{
-		public static void Main(){ start(); }
+//		public static void Main(){ start(); }
 		
 		public static void start()
 		{
 			//init
 			PState state = PState.Instance;
-			Box box = BoxFactory.getObject();
+			Box box = (Box)new BoxFactory().getObject();
 			
 			//pretend event is triggered
 			Random rand = new Random();
 			for(int i=0; i<10; i++){
-				box.open(rand.Next(1,50));
+				box.openNum(rand.Next(1,50));
 			}
 			
 			//event triggered again
-			box.open2();
+			box.openItem();
 			
 			//pass by reference test
 			List<int> test = state.inventory;
@@ -55,7 +55,10 @@ namespace TBase
 			state = PState.Instance;	///prove that we are still getting just the same instance
 			string serialized = JsonConvert.SerializeObject(state);
 			Console.WriteLine(serialized);
-		
+			
+			//save state to file
+			//SaveLoadState.save(serialized);	//by txt
+			//SaveLoadState.saveSerialized();	//by serialization binary
 			
 		}
 	}

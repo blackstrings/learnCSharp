@@ -8,15 +8,15 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 using System;
-namespace TBase
+namespace Serializing
 {
-	public class Item
+	public class Entity
 	{
-		public string name {get;set;}
-		public Item(){}
-		public Item (string name){
-			this.name = name;
+		public Entity ()
+		{
 		}
+		
+		public string name {get;set;}
 	}
 }
 

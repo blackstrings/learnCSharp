@@ -8,15 +8,14 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 using System;
+using System.Collections.Generic;
+
 namespace TBase
 {
-	public class Item
+	public interface IFactory
 	{
-		public string name {get;set;}
-		public Item(){}
-		public Item (string name){
-			this.name = name;
-		}
+		Item getObject();
+		List<Item> getObjects();
 	}
 }
 

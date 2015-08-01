@@ -10,27 +10,27 @@
 using System;
 namespace TBase
 {
-	public class Box
+	public class Box : Item
 	{
-	
-		PState pstate;
 		
+		public Box (string name):base(name){
 		
-		public Box ()
-		{
-			pstate = PState.Instance;	
 		}
 		
-		public void open(int randomNum){
-			//int rand = pstate.getRandomNum(1,50);		//don't do this, it will give you same numbers
-			pstate.inventory.Add(randomNum);
+		//alternative to avoid accessing the singleton directly, use controller
+		public void openNum(int randomNum){
+			//don't do this, it will give you same numbers when looping
+			//this method outside of class
+			//int rand = pstate.getRandomNum(1,50);
+			MainController.numToUser(randomNum);
 		}
 		
-		//alternative for not allowing this class to access the singleton
+		
+		//public Item item {get;set;}
 		public Item item {get;set;}
-		public void open2(){
+		public void openItem(){
 			//give item to the controller handler
-			BoxController.itemToUser(item);
+			MainController.itemToUser(item);
 		}
 		
 		

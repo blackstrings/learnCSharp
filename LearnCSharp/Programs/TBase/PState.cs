@@ -19,9 +19,10 @@ namespace TBase
 		
 		private PState ()
 		{
+			//init all repos
 			inventory = new List<int>();
-			inventory2 = new List<Item>();
-			itemRepo = ItemFactory.getObjects();
+			itemInventory = new List<Item>();
+			itemTemplateRepo = new ItemTemplateFactory().getObjects();
 			Console.WriteLine("PState alive");
 		}
 		
@@ -39,10 +40,18 @@ namespace TBase
 		}
 		
 		//states
-		public List<int> inventory {get; private set;}
+		public List<int> inventory {get; set;}
 		
-		public List<Item> inventory2 {get; private set;}
-		public List<Item> itemRepo {get;set;}
+		public List<Item> itemInventory {get; set;}
+		
+		public List<Item> itemTemplateRepo {get;set;}
+		
+		//methods
+		//factory calls this, it returns the item template from repo
+		public Item getItem(){
+			Random rand = new Random();
+			return itemTemplateRepo[rand.Next(0, itemTemplateRepo.Count-1)];
+		}
 		
 	}
 }

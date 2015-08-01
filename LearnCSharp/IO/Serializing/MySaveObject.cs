@@ -8,15 +8,20 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 using System;
-namespace TBase
+using System.Runtime.Serialization;
+
+
+namespace Serializing
 {
-	public class Item
+	[System.Serializable]
+	public class MySaveObject 
 	{
-		public string name {get;set;}
-		public Item(){}
-		public Item (string name){
-			this.name = name;
+		public MySaveObject ()
+		{
 		}
+		
+		public string jsonString {get;set;}
+		
 	}
 }
 

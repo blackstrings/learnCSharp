@@ -9,18 +9,19 @@
 //------------------------------------------------------------------------------
 using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 
 namespace TBase
 {
-	public static class ItemFactory
+	[System.Serializable]
+	public class PStateSaveSerializeable
 	{
-		public static List<Item> getObjects()
+	
+		public string inventory {get; set;}
+		public string itemInventory {get; set;}
+		
+		public PStateSaveSerializeable ()
 		{
-			List<Item> items = new List<Item>();
-			for(int i=0; i<10; i++){
-				items.Add(new Item("item"+i));
-			}
-			return items;
 		}
 	}
 }
