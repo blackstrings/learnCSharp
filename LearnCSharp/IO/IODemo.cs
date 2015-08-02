@@ -14,6 +14,9 @@ using Newtonsoft.Json.Linq;
 
 namespace IO
 {
+	/// <summary>
+	/// When writing to file, saving as binary produces the smallest file size vs. ASCII(text)
+	/// </summary>
 	public class IODemo
 	{
 	

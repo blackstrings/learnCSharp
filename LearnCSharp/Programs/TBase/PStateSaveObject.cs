@@ -12,7 +12,7 @@ using System.Collections.Generic;
 
 namespace TBase
 {
-	public class PStateSave
+	public class PStateSaveObject
 	{
 	
 		public List<int> inventory {get; set;}
@@ -22,7 +22,7 @@ namespace TBase
 		//for fields that don't exist, when load, that json portion just gets ignored
 		//public List<Item> itemTemplateRepo {get;set;}
 		
-		public PStateSave ()
+		public PStateSaveObject ()
 		{
 			inventory = new List<int>();
 			itemInventory = new List<Item>();

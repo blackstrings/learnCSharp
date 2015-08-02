@@ -12,7 +12,7 @@ namespace TBase
 {
 	public static class MainController
 	{
-		//responsible to interacte between the box and the user
+		//responsible for interaction between the box and the user
 		public static void itemToUser(Item item){
 			PState state = PState.Instance;
 			//Item item = state.getItem();

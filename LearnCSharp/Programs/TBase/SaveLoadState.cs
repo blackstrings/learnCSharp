@@ -33,7 +33,7 @@ namespace TBase
 		public static void load(){
 			try{
 				string serialized = System.IO.File.ReadAllText(pathTxt);
-				PStateSave stateLoad = JsonConvert.DeserializeObject<PStateSave>(serialized);
+				PStateSaveObject stateLoad = JsonConvert.DeserializeObject<PStateSaveObject>(serialized);
 				PState.Instance.inventory = stateLoad.inventory;
 				PState.Instance.itemInventory = stateLoad.itemInventory;
 			}catch(FileNotFoundException e){
@@ -41,13 +41,18 @@ namespace TBase
 			}
 		}
 		
-		//method 2 - better method - convert the objects as jsonStr and save inside a savedObj
-		//save/load as serialized object
+		//method 2 - better method and more time to setup
+		//this method makes you serialize your data into json
+		//then pass that json string into the savedObject's string fields
+		//so basically all your objects are saved as json string
+		//the main savedObj will be holding these jsonString 
+		//which then the savedObject itself will be serialized into binary
 		public static void saveSerialized(){
 			//prepare the saving obj
 			PStateSaveSerializeable pStateSave = new PStateSaveSerializeable();
 			
-			//pass in the data from actual state to the saved object
+			//serialize the state data objects into json
+			//pass in the serialized json data to the saving object
 			pStateSave.inventory = JsonConvert.SerializeObject(PState.Instance.inventory);
 			pStateSave.itemInventory = JsonConvert.SerializeObject(PState.Instance.itemInventory);
 			
@@ -55,7 +60,7 @@ namespace TBase
 			Stream stream = File.Open(pathSerialize, FileMode.Create);
 			BinaryFormatter bformatter = new BinaryFormatter();
 			
-			//write saved obj to file
+			//write saving obj to file
 			bformatter.Serialize(stream, pStateSave);
 			stream.Close();
 		}
