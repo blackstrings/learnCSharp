@@ -17,9 +17,7 @@ namespace DataStructure
 {
 	public class DataStructureDemo
 	{
-//		public static void Main(){
-//			genericList();
-//		}
+//		public static void Main(){ genericList(); }
 		
 		private static void genericList(){
 			List<string> strs = new List<string>();

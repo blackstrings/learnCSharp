@@ -29,9 +29,12 @@ namespace Randomize
 			Console.WriteLine(num + " : " + num2);
 			
 			//ex2 - will generate new numbers
-			int[] arr = new int[10];
-			for(int i=0; i<10; i++){
-				arr[i] = rand.Next(1,100);
+			int maxSize = 10;
+			int min = 1;
+			int max = 100;
+			int[] arr = new int[maxSize];
+			for(int i=0; i<maxSize; i++){
+				arr[i] = rand.Next(min,max);
 				Console.Write(arr[i] + ",");
 			}
 			Console.WriteLine();

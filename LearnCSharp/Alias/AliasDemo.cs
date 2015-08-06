@@ -15,12 +15,7 @@ namespace Alias
 	public class AliasDemo
 	{
 		
-		
-//		public static void Main(){
-//			start();
-//		}
-		
-		
+//		public static void Main(){ start(); }
 		
 		private static void start(){
 			AliasBase alias = new AliasBase();		//put alias to use

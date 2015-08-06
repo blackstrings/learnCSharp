@@ -24,7 +24,7 @@ namespace TBase
 			PState state = PState.Instance;
 			Box box = (Box)new BoxFactory().getObject();
 			
-			//pretend event is triggered
+			//pretend event is triggered, get 10 random numbers
 			Random rand = new Random();
 			for(int i=0; i<10; i++){
 				box.openNum(rand.Next(1,50));
