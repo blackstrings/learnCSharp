@@ -14,7 +14,7 @@ namespace TBase
 {
 	public class LooLoadBinaryDemo
 	{
-		public static void Main(){ start(); }
+//		public static void Main(){ start(); }
 		
 		private static void start(){
 			
