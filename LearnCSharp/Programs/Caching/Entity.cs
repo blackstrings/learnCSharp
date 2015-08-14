@@ -2,9 +2,11 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Runtime.Serialization;
 
 namespace Caching
 {
+	[System.Serializable]
 	public class Entity
 	{
 	
@@ -15,6 +17,8 @@ namespace Caching
 		public int minLvl {get;set;}
 		public int maxLvl {get;set;}
 		public int rarity {get;set;}
+		
+		public int lvl {get;set;}
 		
 		//you do not need to full fill every field in the json
 		//for fields that don't exist, when load, that json portion just gets ignored
@@ -35,6 +39,8 @@ namespace Caching
 			sb.Append(minLvl);
 			sb.Append(",");
 			sb.Append(maxLvl);
+			sb.Append(",");
+			sb.Append(lvl);
 			sb.Append(",");
 			sb.Append(rarity);
 			return sb.ToString();

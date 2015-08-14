@@ -1,14 +1,17 @@
 ///The temp object that will hold the parsed data from the text file
 using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 
 namespace Caching
 {
+	[System.Serializable]
 	public class DataSaveObject
 	{
 		//tier1
 		//json will get pushed into a list, then if you want key/value you'll have to loop the list and do key value
 		public List<Entity> entities {get; set;}
+		public string binaryData {get;set;}
 		
 		//tier2
 		//re-categorize

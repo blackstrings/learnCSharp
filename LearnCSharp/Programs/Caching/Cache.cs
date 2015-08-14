@@ -12,7 +12,7 @@ namespace Caching
 	{
 
 		private static string pathTxt = @"C:\Users\xlao\git\LearnCSharp\LearnCSharp\Programs\Caching\data.txt";
-		//private static string pathSerialize = @"C:\Users\xlao\git\LearnCSharp\LearnCSharp\Programs\Caching\data.so";
+		private static string pathSerialize = @"C:\Users\xlao\git\LearnCSharp\LearnCSharp\Programs\Caching\data.so";
 	
 		//cached fields
 		public List<Entity> entities {get;set;}
@@ -68,49 +68,56 @@ namespace Caching
 			}
 		}
 		
-		/*
+		
 		//method 2 - better method and more time to setup
 		//this method makes you serialize your data into json
 		//then pass that json string into the savedObject's string fields
 		//so basically all your objects are saved as json string
 		//the main savedObj will be holding these jsonString 
 		//which then the savedObject itself will be serialized into binary
-		public static void saveSerialized(){
+		public void saveSerialized(){
 			//prepare the saving obj
-			PStateSaveSerializeable pStateSave = new PStateSaveSerializeable();
+			string serialized = System.IO.File.ReadAllText(pathTxt);//load non-binary file
+			DataSaveObject so = new DataSaveObject();
 			
 			//serialize the state data objects into json
 			//pass in the serialized json data to the saving object
-			pStateSave.inventory = JsonConvert.SerializeObject(PState.Instance.inventory);
-			pStateSave.itemInventory = JsonConvert.SerializeObject(PState.Instance.itemInventory);
+			//so.entities = JsonConvert.SerializeObject(PState.Instance.inventory);
+			//so.itemInventory = JsonConvert.SerializeObject(PState.Instance.itemInventory);
+			so.binaryData = serialized;
 			
 			//prepare the save location and formatter
 			Stream stream = File.Open(pathSerialize, FileMode.Create);
 			BinaryFormatter bformatter = new BinaryFormatter();
 			
 			//write saving obj to file
-			bformatter.Serialize(stream, pStateSave);
+			bformatter.Serialize(stream, so);
 			stream.Close();
 		}
 		
-		public static void loadDeserializeObject(){
+		
+		public void loadDeserializeObject(){
 			//prepare the savedObj for loading back data
-			PStateSaveSerializeable pStateSave = null;
+			DataSaveObject so = null;
 			
 			//read file
 			Stream stream = File.Open(pathSerialize, FileMode.Open);
 			BinaryFormatter bf = new BinaryFormatter();
 			
 			//convert to obj
-			pStateSave = (PStateSaveSerializeable) bf.Deserialize(stream);
+			so = (DataSaveObject) bf.Deserialize(stream);
 			stream.Close();
 			
 			//reassign the values - dont' forget to deserialize the json str to objects, then assign the obj
-			PState.Instance.inventory = JsonConvert.DeserializeObject<List<int>>(pStateSave.inventory);
-			PState.Instance.itemInventory = JsonConvert.DeserializeObject<List<Item>>(pStateSave.itemInventory);
+			DataSaveObject so2 = JsonConvert.DeserializeObject<DataSaveObject>(so.binaryData);//deserialize into a temp obj
+			entities = new List<Entity>();
+			entities = so2.entities;
+			so2 = null;
+			so = null;
+			//PState.Instance.itemInventory = JsonConvert.DeserializeObject<List<Item>>(so.itemInventory);
 			
 		}
-		*/
+		
 		
 	}
 }
