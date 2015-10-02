@@ -26,8 +26,10 @@ namespace Accessors
 		}
 	
 		//automatic setters and getters - the newer method
+		//this new way will auto create the private _age for you
 		public int age {get;set;}
 		
+		//this old way, you'll have to create the _age manually
 		//the above is same as the old method
 		private int _age;
 		public int Age{
