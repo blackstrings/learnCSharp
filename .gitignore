@@ -7,3 +7,8 @@ bin/
 *.sln
 *.csproj
 /json/
+*.suo
+*.exe
+*.pdb
+*.cache
+*.csproj.FileListAbsolute.txt
