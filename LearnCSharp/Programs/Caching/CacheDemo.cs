@@ -12,7 +12,7 @@ namespace Caching
 {
 	public class CacheDemo
 	{
-		public static void Main () { start();}
+		//public static void Main () { start();}
 		
 		public static void start(){
 			//nonBinarySaveLoad();
