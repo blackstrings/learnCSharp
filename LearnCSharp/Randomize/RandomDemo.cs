@@ -18,7 +18,7 @@ namespace Randomize
 {
 	public class RandomDemo
 	{
-        public static void Main(){ start(); }
+        //public static void Main(){ start(); }
 		
 		private static void start(){
 			Random rand = new Random();

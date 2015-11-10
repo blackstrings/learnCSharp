@@ -16,7 +16,7 @@ namespace TBase
 {
 	public class LooDemo
 	{
-//		public static void Main(){ start(); }
+        //public static void Main(){ start(); }
 		
 		public static void start()
 		{
@@ -55,7 +55,9 @@ namespace TBase
 			state = PState.Instance;	///prove that we are still getting just the same instance
 			string serialized = JsonConvert.SerializeObject(state);
 			Console.WriteLine(serialized);
-			
+
+            //Console.ReadLine();
+
 			//save state to file
 			//SaveLoadState.save(serialized);	//by txt
 			//SaveLoadState.saveSerialized();	//by serialization binary
